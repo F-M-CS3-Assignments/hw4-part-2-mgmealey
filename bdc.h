@@ -13,9 +13,7 @@ string vec_to_string(const vector<int>& v);
 
 vector<int> sort(vector<int> input);
 
-vector<int> max(vector<vector<int>>input);
-
-vector<int> sub_vec(vector<int> input, int end);
+vector<int> max(const vector<vector<int>>& input);
 
 vector<int> find_dividends(vector<int>& input, int index);
 
