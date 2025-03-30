@@ -11,7 +11,13 @@ using namespace std;
 // since the vectors used in this program are not very large.
 string vec_to_string(const vector<int>& v);
 
-vector<int> longest_vector(const vector<vector<int>>& candidates);
+vector<int> sort(vector<int> input);
+
+vector<int> max(vector<vector<int>>input);
+
+vector<int> sub_vec(vector<int> input, int end);
+
+vector<int> find_dividends(vector<int>& input, int index);
 
 vector<int> bdc_helper(vector<int>& input);
 

@@ -49,41 +49,82 @@ vector<int> sort(vector<int> input){
 }
 
 //finds vector of max length within a vector of vectors
-int max_length(vector<vector<int>>input){
-	
+vector<int> max(vector<vector<int>>input){
+	vector<int> longest_vec = input[0];
+	int max_length = input[0].size();
+
+	for (int i = 0; i < input.size(); i++){
+		if (input[i].size() > max_length){
+			longest_vec = input[i];
+			max_length = input[i].size();
+		}
+	}
+
+	return longest_vec;
+}
+
+vector<int> sub_vec(vector<int> input, int end){
+	vector<int> answer;
+	for (int i = 0; i < end; i++){
+		answer.push_back(input[i]);
+	}
+	return answer;
 }
 
 //will return a vector containing all divisors of the int at a certain index of a vector
 vector<int> find_dividends(vector<int>& input, int index){
 
+	vector<int> dividends;
+
+	//only look at the indexes before the index in question
+	vector<int> vec = sub_vec(input, index);
+
+	for (int i = 0; i < vec.size(); i++){
+		if (index % input[i] == 0){
+			dividends.push_back(input[i]);
+		}
+	}
+	
+	return dividends;
 }
 
 vector<int> bdc_helper(vector<int>& input){
-	//make chart with input.size() rows and 3 columns
-	//one column for input[i], one for the longest vector including input[i]
-	
+
 	//this vector is for the longest conglomorate including each index in input
 	//this is our dp chart
+	//one column for input[i], one for the longest vector including input[i]
 	vector<vector<int>> conglomorates;
 
+	vector<int> first_idx;
+	first_idx.push_back(input[0]);
+	conglomorates.push_back(first_idx);
+
 	//for each input[i] add each possible conglomarate including that number to a list
-	vector<vector<int>> i_conglomorates;
 	for(int i = 0; i < input.size(); i++){
+
+		vector<int> dividends = find_dividends(input, input[i]);
+
 		//for each previous number that i is divisible by, add it to the vector
 		//and push to conglomorates
-		vector<int> divisors; 
-		for (int j = input.size() - 2; j >= 0; j--){
-			if(input[i] % input[j] == 0){
-				//add i to array with divisor
-			}
-		}
-	}	
-	
-	if input[i] % input[i - 1]
+		for (int j = 0; j < dividends.size(); j++){
+			int divisor_index = -1;
+			for (int k = 0; k < i; ++k) {
+				if (input[k] == dividends[j]) {
+					divisor_index = k;
+					break;
+				}
+            }
 
-	//take longest i_conglomorate and add it to conglomorates
+			// If we find a valid divisor index, try to extend the subsequence
+            if (divisor_index != -1 && conglomorates[divisor_index].size() + 1 > conglomorates[i].size()) {
+                conglomorates[i] = conglomorates[divisor_index]; // Copy the longest subsequence
+                conglomorates[i].push_back(input[i]); // Add the current element to it
+            }
+		}
+	}
 
 	//return longest in conglomorate
+	return max(conglomorates);
 	
 }
 
