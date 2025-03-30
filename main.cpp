@@ -48,6 +48,49 @@ vector<int> sort(vector<int> input){
 	return sorted_vec;
 }
 
+//finds vector of max length within a vector of vectors
+int max_length(vector<vector<int>>input){
+	
+}
+
+//will return a vector containing all divisors of the int at a certain index of a vector
+vector<int> find_dividends(vector<int>& input, int index){
+
+}
+
+vector<int> bdc_helper(vector<int>& input){
+	//make chart with input.size() rows and 3 columns
+	//one column for input[i], one for the longest vector including input[i]
+	
+	//this vector is for the longest conglomorate including each index in input
+	//this is our dp chart
+	vector<vector<int>> conglomorates;
+
+	//for each input[i] add each possible conglomarate including that number to a list
+	vector<vector<int>> i_conglomorates;
+	for(int i = 0; i < input.size(); i++){
+		//for each previous number that i is divisible by, add it to the vector
+		//and push to conglomorates
+		vector<int> divisors; 
+		for (int j = input.size() - 2; j >= 0; j--){
+			if(input[i] % input[j] == 0){
+				//add i to array with divisor
+			}
+		}
+	}	
+	
+	if input[i] % input[i - 1]
+
+	//take longest i_conglomorate and add it to conglomorates
+
+	//return longest in conglomorate
+	
+}
+
+vector<int> biggest_divisible_conglomerate(vector<int>& input){
+	vector<int> sorted = sort(input);
+	return bdc_helper(sorted);
+}
 
 int main() {
 

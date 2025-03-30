@@ -11,13 +11,7 @@ using namespace std;
 // since the vectors used in this program are not very large.
 string vec_to_string(const vector<int>& v);
 
-int find_next_dividend(const vector<int>& input, int start);
-
-vector<int> sub_vec(vector<int> vec, int start);
-
 vector<int> longest_vector(const vector<vector<int>>& candidates);
-
-vector<int> combine(vector<int>& l, vector<int>& r);
 
 vector<int> bdc_helper(vector<int>& input);
 
