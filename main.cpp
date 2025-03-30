@@ -8,6 +8,46 @@
 // uncomment for part 2
 #include <random>
 
+//turns vector into string to be outputted
+//from my part 1 program
+string vec_to_string(const vector<int>& v){
+	string output;
+	output = output + "[";
+	for (int i =  0; i < v.size() - 1; ++i){
+		output = output + to_string(v[i]) + ", ";
+	}
+	output = output + to_string(v[v.size() - 1]) + "]";
+
+	return output;
+}
+
+//sorts the vector
+//from my part 1 program
+vector<int> sort(vector<int> input){
+
+	vector<int> sorted_vec;
+	int start = 0;
+
+	while (!input.empty()){
+		//first find smallest number in sequence
+		int min_idx = 0;
+		int min = input[0];
+
+		for(time_t i = 0; i < input.size(); ++i){
+			if (input[i] < min){
+				min = input[i];
+				min_idx = i;
+			}
+		}
+		
+		//add min number to new sorted vector and then remove it from the original vector
+		sorted_vec.push_back(min);
+		input.erase(input.begin() + min_idx);
+
+	}
+	return sorted_vec;
+}
+
 
 int main() {
 
