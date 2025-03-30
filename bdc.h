@@ -11,9 +11,7 @@ using namespace std;
 // since the vectors used in this program are not very large.
 string vec_to_string(const vector<int>& v);
 
-vector<int> sort(vector<int> input);
-
-vector<int> max(const vector<vector<int>>& input);
+vector<int> max(const vector<vector<int> >& input);
 
 vector<int> find_dividends(vector<int>& input, int index);
 

@@ -1,3 +1,5 @@
+//Time complexity of the recursive approach in part one was O(2^n)
+//time complexity of this approach is O(n^2)
 #include "bdc.h"
 
 #include <vector>
@@ -21,35 +23,7 @@ string vec_to_string(const vector<int>& v){
 	return output;
 }
 
-// //sorts the vector
-// //from my part 1 program
-// vector<int> sort(vector<int> input){
-
-// 	vector<int> sorted_vec;
-// 	int start = 0;
-
-// 	while (!input.empty()){
-// 		//first find smallest number in sequence
-// 		int min_idx = 0;
-// 		int min = input[0];
-
-// 		for(time_t i = 0; i < input.size(); ++i){
-// 			if (input[i] < min){
-// 				min = input[i];
-// 				min_idx = i;
-// 			}
-// 		}
-		
-// 		//add min number to new sorted vector and then remove it from the original vector
-// 		sorted_vec.push_back(min);
-// 		input.erase(input.begin() + min_idx);
-
-// 	}
-// 	return sorted_vec;
-// }
-
-//finds vector of max length within a vector of vectors
-vector<int> max(const vector<vector<int>>& input){
+vector<int> max(const vector<vector<int> >& input){
 	vector<int> longest_vec = input[0];
 	int max_length = longest_vec.size();
 
@@ -82,7 +56,7 @@ vector<int> find_dividends(vector<int>& input, int index){
 	return dividends;
 }
 
-vector<int> longest_vector(const vector<vector<int>>& candidates){
+vector<int> longest_vector(const vector<vector<int> >& candidates){
 	
 	int max_length = candidates[0].size();
 	int idx_longest = 0;
@@ -105,7 +79,7 @@ vector<int> bdc_helper(vector<int>& input){
 	//this vector is for the longest conglomorate including each index in input
 	//this is our dp chart
 	//one column for input[i], one for the longest vector including input[i]
-	vector<vector<int>> conglomorates(input.size());
+	vector<vector<int> > conglomorates(input.size());
 
 	//base case
 	conglomorates[0].push_back(input[0]);
@@ -114,7 +88,7 @@ vector<int> bdc_helper(vector<int>& input){
 	for(int i = 1; i < input.size(); i++){
 		vector<int> dividends = find_dividends(input, i);
 
-		vector<vector<int>> div_congs;
+		vector<vector<int> > div_congs;
 
 		//for each previous number that i is divisible by, add it to the vector
 		//and push to conglomorates
