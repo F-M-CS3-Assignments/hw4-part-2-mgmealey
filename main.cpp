@@ -6,6 +6,7 @@
 #include <cassert>
 #include <iostream>
 #include <set>
+#include <algorithm>
 
 // uncomment for part 2
 #include <random>
@@ -15,7 +16,7 @@
 string vec_to_string(const vector<int>& v){
 	string output;
 	output = output + "[";
-	for (int i =  0; i < v.size() - 1; ++i){
+	for (time_t i =  0; i < v.size() - 1; ++i){
 		output = output + to_string(v[i]) + ", ";
 	}
 	output = output + to_string(v[v.size() - 1]) + "]";
@@ -27,7 +28,7 @@ vector<int> max(const vector<vector<int> >& input){
 	vector<int> longest_vec = input[0];
 	int max_length = longest_vec.size();
 
-	for (int i = 0; i < input.size(); i++){
+	for (time_t i = 0; i < input.size(); i++){
 		if (input[i].size() > max_length){
 			longest_vec = input[i];
 			max_length = input[i].size();
@@ -47,7 +48,7 @@ vector<int> find_dividends(vector<int>& input, int index){
 		return dividends;
 	}
 	//only look at the indexes before the index in question
-	for (int i = 0; i < index; i++){
+	for (time_t i = 0; i < index; i++){
 		if (input[index] % input[i] == 0){
 			dividends.push_back(input[i]);
 		}
@@ -61,7 +62,7 @@ vector<int> longest_vector(const vector<vector<int> >& candidates){
 	int max_length = candidates[0].size();
 	int idx_longest = 0;
 
-	for (int i = 0; i < candidates.size(); ++i){
+	for (time_t i = 0; i < candidates.size(); ++i){
 		if(candidates[i].size() > max_length){
 			max_length = candidates[i].size();
 			idx_longest = i;
@@ -85,18 +86,18 @@ vector<int> bdc_helper(vector<int>& input){
 	conglomorates[0].push_back(input[0]);
 
 	//for each input[i] add each possible conglomarate including that number to a list
-	for(int i = 1; i < input.size(); i++){
+	for(time_t i = 1; i < input.size(); i++){
 		vector<int> dividends = find_dividends(input, i);
 
 		vector<vector<int> > div_congs;
 
 		//for each previous number that i is divisible by, add it to the vector
 		//and push to conglomorates
-		for (int j = 0; j < dividends.size(); j++){
+		for (time_t j = 0; j < dividends.size(); j++){
 			int divisor_idx = -1;
 
 			// Find the index of the divisor in the input array
-			for (int k = 0; k < i; ++k) {
+			for (time_t k = 0; k < i; ++k) {
 				if (input[k] == dividends[j]) {
 					divisor_idx = k;
 					break;
